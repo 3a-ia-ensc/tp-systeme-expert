@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
         <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon_32.png') }}" sizes="32x32"/>
         <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon_64.png') }}" sizes="64x64"/>
-        <!--<link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -131,17 +131,23 @@
             </form>
             
             <div id = 'prediction'>
-                L'avis de l'expert:<br />
+                <h3>L'avis de l'expert</h3>
 
-                Architectures possibles:
-                <ul id = 'possible_results'>
+                <div id = 'block_results'>
+                    <h4>Architectures possibles</h4>
+                    <ul id = 'possible_results'></ul>
+                </div>
 
-                </ul>
-
-                Nous vous conseillons de jeter un oeil à ces articles:
-                <ul id = 'bibliography'>
-
-                </ul>
+                <div id = 'block_biblio'>
+                    <h4>Nous vous conseillons de jeter un oeil à ces articles</h4>
+                    <ul id = 'bibliography'></ul>
+                </div>
+            </div>
+            <div id = 'block_error'>
+                Oooop's ! Apparemment l'expert n'est pas si expert que ça... une erreur est survenu ou aucune
+                architecture correspondant à vos paramètre n'a pu être trouvée.
+                
+                <img src = '../static/img/error.gif' />
             </div>
         </main>
         
@@ -155,8 +161,16 @@
             var results = document.getElementById('possible_results')
             var biblio = document.getElementById('bibliography')
 
+            var block_prediction = document.getElementById('prediction')
+            var block_biblio = document.getElementById('block_biblio')
+            var block_error = document.getElementById('block_error')
+
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
+                //ask_the_expert();
+            })
+
+            document.getElementById('btn').addEventListener('click', (e) => {
                 ask_the_expert();
             })
 
@@ -171,28 +185,40 @@
                 request.open("POST", "/api/forward");
                 request.send(formData);
 
+                block_prediction.style.display = 'none';
+                block_biblio.style.display = 'none';
+                block_error.style.display = 'none'
+
                 request.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
-                        res = JSON.parse(request.responseText)
-                        
+                        block_prediction.style.display = 'block';
+
+                        var res = JSON.parse(request.responseText)
+
                         results.innerHTML = ''
                         biblio.innerHTML = ''
 
                         if(res.result.length > 0) {
                             res.result.forEach(item => {
-                            display_architecture(item);
-                        })
+                                display_architecture(item);
+                            })
                         }
 
                         if(res.bibliography.length > 0) {
+                            block_biblio.style.display = 'block';
                             res.bibliography.forEach(item => {
-                            display_article(item);
-                        })
+                                display_article(item);
+                            })
                         }
-
                     }
                 }
+
+                request.onerror = function () {
+                    block_error.style.display = 'block'
+                }
             }
+
+
 
             function display_architecture(archi) {
                 var li = document.createElement('li')
@@ -203,7 +229,11 @@
 
             function display_article(article) {
                 var li = document.createElement('li')
-                li.innerText = article.name + '(' + article.year + ')'
+                var a  = document.createElement('a')
+                a.classList.add('article_link')
+                a.href = article.url
+                a.innerText = article.name + ', ' + article.author + ' (' + article.year + ')'
+                li.appendChild(a)
 
                 biblio.appendChild(li)
             }

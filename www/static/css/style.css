@@ -26,6 +26,7 @@ header h1 {
 
 main {
     min-height: 100vh;
+    padding-bottom: 10px;
     width: 100vw;
 }
 
@@ -58,6 +59,65 @@ h4 {
 .col_ul li {
     display: block;
     width: 30%;
+}
+
+#prediction {
+    /*display: none;*/
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    background: #d6d6d6;
+}
+
+#possible_results {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#possible_results li {
+    width: 150px;
+    padding: 20px 5px;
+    margin: 0 10px;
+    list-style: none;
+    background: #5499de;
+    border-radius: 10px;
+    color: white;
+}
+
+#bibliography {
+
+}
+
+.article_link {
+    text-decoration: none;
+    color: black;
+    transition: color 0.5s;
+}
+
+.article_link:hover {
+    color: #9c0049;
+}
+
+#bibliography li {
+    list-style: none;
+}
+
+#block_error {
+    display: none;
+    margin: 20px auto;
+    padding: 40px;
+    width: 50%;
+    border-radius: 10px;
+    background: #d6d6d6;
+    text-align: center;
+}
+
+#block_error img {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
 }
 
 #intro {
@@ -124,10 +184,10 @@ label {
 }
 
 #prediction {
+    display: none;
     text-align: center;
     margin:auto;
     width: 80%;
-    
 }
 
 footer {

@@ -18,7 +18,9 @@ __status__ = "Development"
 from src.main import initialize_akinn, Fact
 
 
-app = Flask(__name__, template_folder="www/templates")
+app = Flask(__name__,
+            template_folder="www/templates",
+            static_folder="www/static")
 akinn = initialize_akinn()
 
 
