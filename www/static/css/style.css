@@ -4,13 +4,17 @@
     font-family: 'Roboto'
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 header {
     height: 100vh;
     width: 100vw;
     background: url('../img/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg');
     background-size: cover;
+    position: relative;
 }
-
 
 header h1 {
     color: #fffdf0;
@@ -18,6 +22,14 @@ header h1 {
     text-align: center;
     font-size: 5em;
     padding-top: 100px;
+}
+
+#intro {
+    color: white;
+    width: 60%;
+    margin: 40px auto;
+    text-align: justify;
+    font-size: 1.5em;
 }
 
 main {
@@ -38,4 +50,32 @@ form {
 
 label {
     cursor: pointer;
+}
+
+#link_arrow {
+    display: block;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    bottom: 5px;
+    left: calc(100vw / 2 - (60px / 2));
+    cursor: pointer;
+}
+
+#down_arrow {
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #262626;
+    color: white;
+}
+
+footer img {
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
 }
