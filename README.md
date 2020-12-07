@@ -15,8 +15,8 @@ Le système expert est "servi" sous la forme d'un serveur web dans un container.
 ```shell
 git clone https://github.com/3a-ia-ensc/tp-systeme-expert 
 cd tp-systeme-expert
-docker build
-docker run -p 5000:5000
+docker build --tag akinn:1.0 .
+docker run --publish 5000:5000 --detach --name akinn_container akinn:1.0
 ```
 
 Rendez-vous ensuite à la page [http://localhost:5000/]( http://localhost:5000/) pour accéder à l'application.

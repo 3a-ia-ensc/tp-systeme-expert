@@ -5,7 +5,7 @@ Create a web app
 """
 from json import dumps
 
-from flask import Flask, request, jsonify, render_template, Response
+from flask import Flask, request, render_template
 
 __author__ = "Simon Audrix and Gabriel Nativel-Fontaine"
 __credits__ = ["Simon Audrix", "Gabriel Nativel-Fontaine"]
@@ -17,7 +17,8 @@ __status__ = "Development"
 
 from src.main import initialize_akinn, Fact
 
-app = Flask(__name__)
+
+app = Flask(__name__, template_folder="www/templates")
 akinn = initialize_akinn()
 
 
