@@ -19,3 +19,23 @@ header h1 {
     font-size: 5em;
     padding-top: 100px;
 }
+
+main {
+    height: 100vh;
+    width: 100vw;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+
+#flex_input {
+    
+}
+
+label {
+    cursor: pointer;
+}

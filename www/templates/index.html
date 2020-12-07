@@ -20,8 +20,109 @@
         
         <main>
             <form>
+                <div id = 'input'>
+                    <h2>Entrée du réseau</h2>
+                    <div>
+                        <input type="radio" id="image" name="input" value="image" checked>
+                        <label for="image">Images</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="son" name="input" value="son" checked>
+                        <label for="son">Sons</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="phrase" name="input" value="phrase" checked>
+                        <label for="phrase">Phrases</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="text" name="input" value="text" checked>
+                        <label for="text">Texte</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="mot" name="input" value="mot" checked>
+                        <label for="mot">Mots</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="video" name="input" value="video" checked>
+                        <label for="video">Vidéos</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="vecteur" name="input" value="vecteur" checked>
+                        <label for="vecteur">Vecteurs</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="matrice" name="input" value="matrice" checked>
+                        <label for="matrice">Matrice</label>
+                    </div>
+                </div>
+                <div id = 'input'>
+                    <h2>Quelle action ?</h2>
+                    <div>
+                        <input type="radio" id="classification" name="action" value="classification" checked>
+                        <label for="classification">Classification</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="segmentation" name="action" value="segmentation" checked>
+                        <label for="segmentation">Segmentation</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="complet" name="action" value="complet" checked>
+                        <label for="complet">Complétion</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="compression" name="action" value="compression" checked>
+                        <label for="compression">Compression</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="generation" name="action" value="generation" checked>
+                        <label for="generation">Génération</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="regression" name="action" value="regression" checked>
+                        <label for="regression">Regression</label>
+                    </div>
+                </div>
+                
+                <div id = 'data'>
+                    <h2>Vos données ?</h2>
+                    <div>
+                        <input type="radio" id="supervised" name="label" value="supervised" checked>
+                        <label for="supervised">Etiquettées</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="unsupervised" name="label" value="unsupervised" checked>
+                        <label for="unsupervised">Non étiquettées</label>
+                    </div>
+                </div>
+                
+                <div id = 'parametres'>
+                    <h2>Paramètres</h2>
+                    <div>
+                        <input type="checkbox" id="reconstruction" name="parametres" value="reconstruction" checked>
+                        <label for="reconstruction">Bonne reconstruction</label>
+                    </div>
+                </div>
+                
+                <input id='btn' type="submit" value='Trouver une architecture' />
                 
             </form>
         </main>
+        
+        <footer>
+        Made with <img src = '../static/img/heart.png' /> by Simon et Gabriel
+        </footer>
     </body>
 </html>
