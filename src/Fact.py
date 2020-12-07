@@ -38,6 +38,19 @@ class Fact:
     def copy(self):
         return Fact(self.text, self.description, self.negation)
 
+    def to_json(self):
+        if isinstance(self.description, Article):
+            article = self.description
+            json = {'name': article.name,
+                    'authors': article.authors,
+                    'year': article.year,
+                    'url': article.url}
+        else:
+            json = {'name': self.text,
+                    'description': self.description,
+                    'negation': self.negation}
+        return json
+
     def __repr__(self):
         if self.negation:
             return '!' + self.text
@@ -99,6 +112,14 @@ class Rule:
     def give(self, fact):
         self.product_fact = fact
         return self
+
+    def is_fulfilled(self, facts):
+        result = True
+        for f in self.facts:
+            if f not in facts:
+                result = False
+
+        return result
 
     def __str__(self):
         return self.__repr__()

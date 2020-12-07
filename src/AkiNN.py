@@ -51,35 +51,48 @@ class AkiNN:
         """
         print(f'Est-ce que {fact} ?')
 
-    def _propagateRule(self, rule, given_facts):
-        empty = True
-        ret = False
-        for pre in rule.facts:
-            print("evaluating ", pre)
-            if pre != given_facts:
-                empty = False
-                break
-        if empty:
-            print("Propagating rule " + str(rule.pre) + " => " + str(rule.post))
-            for post in rule.product_fact:
-                if post != given_facts:
-                    if self.verb: print("Adding " + post + " as a new fact")
-                    given_facts(post)
-                    ret = True  # At least one fact has been added
+    def _propagateRule(self, rule, given_facts, who='terminal'):
+        new_fact = None
+        loop = False
+
+        print(rule)
+        if rule.is_fulfilled(given_facts):
+            new_fact = rule.product_fact
             rule.active = False
-        return ret
+            loop = True
+            print(f"Admit new fact {new_fact}")
+
+        return loop, new_fact
+
+    def _reactivateRules(self):
+        for r in self.rules:
+            r.active = True
 
     def ForwardChaining(self, given_facts):
         """
+        :param who:
         :param given_facts:
         :return:
         """
-        loop = True  # True if any fact has been added
+        self._reactivateRules()
+        result = []
+        bib = []
+
+        loop = True
         while loop:
             loop = False
             for rule in self.rules:
                 if rule.active:
-                    loop |= self._propagateRule(rule, given_facts)
+                    status, fact = self._propagateRule(rule, given_facts)
+                    loop |= status
+                    if status:
+                        given_facts.append(fact)
+                        if fact.type == 'terminal':
+                            result.append(fact)
+                        if fact.type == 'article':
+                            bib.append(fact)
+
+        return result, bib
 
     def BackwardChaining(self, fact, given_facts):
         """

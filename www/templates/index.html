@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>AkiNN</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon_32.png') }}" sizes="32x32"/>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon_64.png') }}" sizes="64x64"/>
         <!--<link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
@@ -23,81 +25,81 @@
         </header>
         
         <main id = 'main_content'>
-            <form>
+            <form id = 'form_nn'>
                 <h2>Sélectionnez les paramètres de votre problématique</h2>
                 <div id = 'flex_form'>
                 
                 <div id = 'input' class = 'cat'>
                     <h3>Entrée du réseau</h3>
                     <div>
-                        <input type="radio" id="image" name="input" value="image" checked>
+                        <input type="radio" id="image" name="input" value="entree-image" checked>
                         <label for="image">Images</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="son" name="input" value="son" />
+                        <input type="radio" id="son" name="input" value="entree-son" />
                         <label for="son">Sons</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="phrase" name="input" value="phrase" />
+                        <input type="radio" id="phrase" name="input" value="entree-phrase" />
                         <label for="phrase">Phrases</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="text" name="input" value="text" />
+                        <input type="radio" id="text" name="input" value="entree-texte" />
                         <label for="text">Texte</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="mot" name="input" value="mot" />
+                        <input type="radio" id="mot" name="input" value="entree-mot" />
                         <label for="mot">Mots</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="video" name="input" value="video" />
+                        <input type="radio" id="video" name="input" value="entree-video" />
                         <label for="video">Vidéos</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="vecteur" name="input" value="vecteur" />
+                        <input type="radio" id="vecteur" name="input" value="entree-vecteur" />
                         <label for="vecteur">Vecteurs</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="matrice" name="input" value="matrice" />
+                        <input type="radio" id="matrice" name="input" value="entree-matrice" />
                         <label for="matrice">Matrice</label>
                     </div>
                 </div>
                 <div id = 'action' class = 'cat'>
                     <h3>Quelle action ?</h3>
                     <div>
-                        <input type="radio" id="classification" name="action" value="classification" checked>
+                        <input type="radio" id="classification" name="action" value="action-classification" checked>
                         <label for="classification">Classification</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="segmentation" name="action" value="segmentation" />
+                        <input type="radio" id="segmentation" name="action" value="action-segmentation" />
                         <label for="segmentation">Segmentation</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="complet" name="action" value="complet" />
+                        <input type="radio" id="complet" name="action" value="action-completion" />
                         <label for="complet">Complétion</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="compression" name="action" value="compression" />
+                        <input type="radio" id="compression" name="action" value="action-compression" />
                         <label for="compression">Compression</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="generation" name="action" value="generation" />
+                        <input type="radio" id="generation" name="action" value="action-generation" />
                         <label for="generation">Génération</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="regression" name="action" value="regression" />
+                        <input type="radio" id="regression" name="action" value="action-regression" />
                         <label for="regression">Regression</label>
                     </div>
                 </div>
@@ -105,12 +107,12 @@
                 <div id = 'data' class = 'cat'>
                     <h3>Vos données ?</h3>
                     <div>
-                        <input type="radio" id="supervised" name="label" value="supervised" checked />
+                        <input type="radio" id="supervised" name="label" value="data-supervised" checked />
                         <label for="supervised">Etiquettées</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="unsupervised" name="label" value="unsupervised" />
+                        <input type="radio" id="unsupervised" name="label" value="data-unsupervised" />
                         <label for="unsupervised">Non étiquettées</label>
                     </div>
                 </div>
@@ -130,12 +132,94 @@
             
             <div id = 'prediction'>
                 L'avis de l'expert:<br />
-                Un réseau de neurones convolutionnel
+
+                Architectures possibles:
+                <ul id = 'possible_results'>
+
+                </ul>
+
+                Nous vous conseillons de jeter un oeil à ces articles:
+                <ul id = 'bibliography'>
+
+                </ul>
             </div>
         </main>
         
         <footer>
         Made with <img src = '../static/img/heart.png' /> by Simon et Gabriel
         </footer>
+
+        <script>
+            var form = document.getElementById('form_nn')
+            var rec_box = document.getElementById('reconstruction')
+            var results = document.getElementById('possible_results')
+            var biblio = document.getElementById('bibliography')
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                ask_the_expert();
+            })
+
+            function ask_the_expert() {
+                var formData = new FormData();
+                formData.append("input", get_radio_value('input'));
+                formData.append("action", get_radio_value('action'));
+                formData.append("label", get_radio_value('label'));
+                formData.append("reconstruction", rec_box.value);
+
+                var request = new XMLHttpRequest();
+                request.open("POST", "/api/forward");
+                request.send(formData);
+
+                request.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        res = JSON.parse(request.responseText)
+                        
+                        results.innerHTML = ''
+                        biblio.innerHTML = ''
+
+                        if(res.result.length > 0) {
+                            res.result.forEach(item => {
+                            display_architecture(item);
+                        })
+                        }
+
+                        if(res.bibliography.length > 0) {
+                            res.bibliography.forEach(item => {
+                            display_article(item);
+                        })
+                        }
+
+                    }
+                }
+            }
+
+            function display_architecture(archi) {
+                var li = document.createElement('li')
+                li.innerText = archi.description
+
+                results.appendChild(li)
+            }
+
+            function display_article(article) {
+                var li = document.createElement('li')
+                li.innerText = article.name + '(' + article.year + ')'
+
+                biblio.appendChild(li)
+            }
+
+            function get_radio_value(name) {
+                let radios = form.elements[name];
+                var val = null;
+                for (let i=0, len=radios.length; i<len; i++) {
+                    if ( radios[i].checked ) {
+                        val = radios[i].value;
+                        break;
+                    }
+                }
+
+                return val;
+            }
+        </script>
     </body>
 </html>

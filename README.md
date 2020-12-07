@@ -1,6 +1,6 @@
 # Système expert - AkiNN
 
-#  ![Supported Python Versions](https://img.shields.io/badge/Python->=3.8-blue.svg?logo=python&logoColor=white) ![Made withJupyter](https://img.shields.io/badge/Jupyter-6.1.5-orange.svg?logo=jupyter&logoColor=white) ![Made withFlask](https://img.shields.io/badge/Flask-1.1.2-red.svg?logo=flask&logoColor=white)![GitHub license](https://img.shields.io/badge/License-DTFW-green.svg?logo=GitHub%20Sponsors&logoColor=white) 
+#  ![Supported Python Versions](https://img.shields.io/badge/Python->=3.8-blue.svg?logo=python&logoColor=white) ![Made withJupyter](https://img.shields.io/badge/Jupyter-6.1.5-orange.svg?logo=jupyter&logoColor=white) ![Made withFlask](https://img.shields.io/badge/Flask-1.1.2-red.svg?logo=flask&logoColor=white) ![GitHub license](https://img.shields.io/badge/License-DTFW-green.svg?logo=GitHub%20Sponsors&logoColor=white)    
 
 _Auteurs:_ [Simon Audrix](mailto:saudrix@ensc.fr) & [Gabriel Nativel-Fontaine](mailto:gnativ910e@ensc.fr)
 
@@ -10,7 +10,7 @@ Il a été réalisé dans le cadre du module **Connaissances et Représentations
 
 ## Lancer l'application
 
-Le système expert est "servie" sous la forme d'un serveur web dans un container.
+Le système expert est "servi" sous la forme d'un serveur web dans un container.
 
 ```shell
 git clone https://github.com/3a-ia-ensc/tp-systeme-expert 

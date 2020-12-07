@@ -58,6 +58,13 @@ def initialize_akinn():
                      year='1998',
                      url='https://psycnet.apa.org/journals/rev/65/6/386/'))
 
+    art_2 = Fact('article-image-seg',
+                 Article(
+                     name='A review on image segmentation techniques',
+                     authors='Nikhil R., Sankar K.',
+                     year='1993',
+                     url='https://www.sciencedirect.com/science/article/abs/pii/003132039390135J'))
+
     beta_high = Fact('parametre-beta-grand')
     beta_low = Fact('parametre-beta-petit')
 
@@ -117,5 +124,5 @@ def initialize_akinn():
 
     # ajout de la bibliographie
     system.addRule(Rule(nn_perc).give(art_1))
-
+    system.addRule((in_img & nn_cnn_mlp).give(art_2))
     return system

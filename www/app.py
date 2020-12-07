@@ -15,7 +15,7 @@ __version__ = "1.0.0"
 __email__ = "gnativ910e@ensc.fr"
 __status__ = "Development"
 
-from src.main import initialize_akinn
+from src.main import initialize_akinn, Fact
 
 app = Flask(__name__)
 akinn = initialize_akinn()
@@ -39,11 +39,35 @@ def knowledge():
                            facts=akinn.facts)
 
 
-@app.route('/api/forward')
+@app.route('/api/forward', methods=['POST'])
 def forward_checking():
     """Forward checking
     """
-    return render_template('index.html')
+
+    facts = [
+        Fact(request.form.get('input')),
+        Fact(request.form.get('action')),
+        Fact(request.form.get('label')),
+        Fact(request.form.get('reconstruction'))
+    ]
+    neural_net_expertise, biblio = akinn.ForwardChaining(facts)
+
+    result = []
+    for nn in neural_net_expertise:
+        result.append(nn.to_json())
+
+    bibliography = []
+    for bb in biblio:
+        bibliography.append(bb.to_json())
+
+    to_send = dumps({'result': result, 'bibliography': bibliography})
+
+    response = app.response_class(response=to_send,
+                                  status=200,
+                                  mimetype='application/json')
+
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
 
 
 if __name__ == '__main__':
