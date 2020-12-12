@@ -13,10 +13,10 @@ Il a été réalisé dans le cadre du module **Connaissances et Représentations
 Le système expert est "servi" sous la forme d'un serveur web dans un container.
 
 ```shell
-git clone https://github.com/3a-ia-ensc/tp-systeme-expert 
-cd tp-systeme-expert
-docker build --tag akinn:1.0 .
-docker run --publish 5000:5000 --detach --name akinn_container akinn:1.0
+$ git clone https://github.com/3a-ia-ensc/tp-systeme-expert 
+$ cd tp-systeme-expert
+$ docker build --tag akinn:1.0 .
+$ docker run --publish 5000:5000 --detach --name akinn_container akinn:1.0
 ```
 
 Rendez-vous ensuite à la page [http://localhost:5000/]( http://localhost:5000/) pour accéder à l'application.
@@ -25,6 +25,8 @@ Rendez-vous ensuite à la page [http://localhost:5000/]( http://localhost:5000/)
 
 ### Les faits
 
+#### Faits intermédiaires
+
 Le système utilise une base de faits qui se regroupent en quatre grandes catégories:
 
 - Quelles données l'utilisateur veut traiter
@@ -32,7 +34,11 @@ Le système utilise une base de faits qui se regroupent en quatre grandes catég
 - La possibilité de faire un apprentissage supervisé ou non
 - L'ensemble des architectures possibles
 
+#### Faits terminaux
+
 Ici l'ensemble des faits décrivant une architecture sont considérés comme terminaux, à l'inverse des trois autres catégories ou tous les faits peuvent être utilisés comme des faits initiaux.
+
+#### Faits bibliographiques
 
 Nous avons ajouté au système des faits "bibliographiques", ceux-ci correspondent à des éléments de bibliographie. Ainsi, le système est capable, en plus de déterminer la meilleure architecture de réseaux à utiliser en fonction du contexte, de proposer des articles de recherches associés à ces architectures.
 
@@ -44,7 +50,7 @@ Chacun de ces faits peut être utilisé en entrée ou en sortie de règles. L'ut
 
 Les règles utilisent un système de chainage avant à partir de faits initiaux, cela lui permet de naviguer de règle en règle en fonction des faits reçus lors de la requête de l'utilisateur. Si une règle est incomplète, c'est-à-dire que le système ne dispose pas de connaissance sur l'ensemble des faits nécessaire pour l'appliquer, alors **AkiNN** peut demander à l'utilisateur de compléter ces règles en statuant sur les faits manquants. Partant de faits initiaux le système peut donc inférer une architecture de réseaux adaptée au problème proposé par l'utilisateur.
 
-### Chaînage arrière
+#### Chaînage arrière
 
 De même, un utilisateur peut donner en entrée un fait terminal. Dans ce cas, le système utilise une technique de chainage arrière afin de conclure sur les entrées possibles du réseau demandé. __AkiNN__ peut donc vous dire quelles données utiliser dans votre architecture.
 
