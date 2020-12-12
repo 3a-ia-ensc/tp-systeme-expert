@@ -155,7 +155,7 @@ def initialize_akinn():
                     url='https://www.tandfonline.com/doi/abs/10.1080/01691864.2020.1829040'
                  ))
 
-    art_14 = Fact('article-image-seg-rnn',
+    art_14 = Fact('article-video-seg-rnn',
                  Article(
                      name='Tensor-Train Recurrent Neural Networks for Video Classification',
                      authors='Yang Y. at al.',
@@ -353,4 +353,26 @@ def initialize_akinn():
     # ajout de la bibliographie
     system.addRule(Rule(nn_perc).give(art_1))
     system.addRule((in_img & nn_cnn_mlp).give(art_2))
+
+    system.addRule((in_son & act_compr & nn_vae).give(art_30))
+    system.addRule((in_son & act_gen & nn_rnn).give(art_29))
+    system.addRule((in_son & act_gen & nn_gan).give(art_28))
+
+    system.addRule((in_txt & act_gen & nn_rnn).give(art_27))
+    system.addRule((in_txt & act_compr & nn_cnn).give(art_26))
+    system.addRule((in_txt & act_compr & nn_rnn).give(art_25))
+    system.addRule((in_txt & act_compl & nn_cnn).give(art_24))
+    system.addRule((in_txt & act_compl & nn_rnn).give(art_23))
+    system.addRule((in_txt & act_seg & nn_rnn).give(art_22))
+    system.addRule((in_txt & act_class & nn_cnn).give(art_21))
+    system.addRule((in_txt & act_class & nn_rnn).give(art_20))
+
+    system.addRule((in_video & act_compl & nn_cnn).give(art_19))
+    system.addRule((in_video & act_seg & nn_cnn).give(art_17))
+    system.addRule((in_video & act_seg & nn_rnn).give(art_16))
+    system.addRule((in_video & act_class & nn_cnn).give(art_15))
+    system.addRule((in_video & act_seg & nn_rnn).give(art_14))
+    system.addRule((in_son & act_seg & nn_rnn).give(art_13))
+    system.addRule((in_son & act_seg & nn_cnn).give(art_12))
+
     return system
