@@ -55,12 +55,12 @@ class AkiNN:
         new_fact = None
         loop = False
 
-        print(rule)
+        #print(rule)
         if rule.is_fulfilled(given_facts):
             new_fact = rule.product_fact
             rule.active = False
             loop = True
-            print(f"Admit new fact {new_fact}")
+            #print(f"Admit new fact {new_fact}")
 
         return loop, new_fact
 
@@ -100,9 +100,9 @@ class AkiNN:
         :param given_facts:
         :return:
         """
-        print("BC for fact " + str(fact))
+        #print("BC for fact " + str(fact))
         for rule in self._getRulesForFact(fact):
-            print(rule)
+            #print(rule)
             for pre in rule.facts:
                 if pre not in given_facts:
                     rulespre = self._getRulesForFact(pre)

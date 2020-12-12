@@ -20,7 +20,7 @@
         
         <main id = 'main_knowledge'>
             <div>
-                <h3>La base de faits</h3>
+                <h3>La base de faits ({{ nb_facts }})</h3>
                 <h4>Faits intermédiaires</h4>
                 <ul class = 'col_ul'>
                 {%for f in facts%}
@@ -50,7 +50,7 @@
             </div>
 
             <div>
-                <h3>La base de règles</h3>
+                <h3>La base de règles ({{ nb_rules }})</h3>
                 <ul>
                 {%for i in range(0, nb_rules)%}
                     <li>{{ rules[i] }}</li>

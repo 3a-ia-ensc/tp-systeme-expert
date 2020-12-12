@@ -46,7 +46,7 @@ def knowledge():
 def forward_checking():
     """Forward checking
     """
-
+    print(request.form.get('reconstruction'))
     facts = [
         Fact(request.form.get('input')),
         Fact(request.form.get('action')),

@@ -30,6 +30,7 @@ def initialize_akinn():
     gen_new = Fact('generation-nouveau')
 
     rec_sup = Fact('reconstruction-elevee')
+    rec_neg = Fact('reconstruction-basse')
 
     # Ce qu'on a
     bdd_label = Fact('bdd-etiquetee')
@@ -45,13 +46,13 @@ def initialize_akinn():
     nn_mlp = Fact('reseau-mlp', 'Perceptron multi-couches', fact_type='terminal')
     nn_cnn = Fact('reseau-cnn', 'Réseau de neurones convolutif', fact_type='terminal')
     nn_cnn_mlp = Fact('reseau-cnn+mlp', 'Réseau de neurones convolutif suivi d\'un perceptron multi-couches', fact_type='terminal')
-    nn_rnn = Fact('reseau-rnn', fact_type='terminal')
-    nn_rnn_mlp = Fact('reseau-rnn+mlp', fact_type='terminal')
+    nn_rnn = Fact('reseau-rnn', 'Réseau de neurones récurrent', fact_type='terminal')
+    nn_rnn_mlp = Fact('reseau-rnn+mlp', 'Réseau de neurones récurrent suivi d\'un perceptron multi-couches', fact_type='terminal')
     nn_hopf = Fact('reseau-hopf', fact_type='terminal')
     nn_bolt = Fact('reseau-boltzmann', fact_type='terminal')
     nn_ae = Fact('reseau-autoencoder', fact_type='terminal')
-    nn_vae = Fact('reseau-vae', fact_type='terminal')
-    nn_gan = Fact('reseau-gan', fact_type='terminal')
+    nn_vae = Fact('reseau-vae', 'Autoencodeur variationnel', fact_type='terminal')
+    nn_gan = Fact('reseau-gan', 'Réseau antagoniste génératif', fact_type='terminal')
 
     art_1 = Fact('article-perceptron',
                  Article(
@@ -303,8 +304,8 @@ def initialize_akinn():
     system.addRule((bdd_label & in_img & act_compr).give(nn_vae))
     system.addRule((bdd_label & in_img & act_gen & rec_sup).give(nn_vae))
     system.addRule(Rule(rec_sup).give(beta_low))
-    system.addRule((bdd_label & in_img & act_gen & neg(rec_sup)).give(nn_gan))
-    system.addRule((bdd_label & in_img & act_gen & neg(rec_sup)).give(nn_vae))
+    system.addRule((bdd_label & in_img & act_gen & rec_neg).give(nn_gan))
+    system.addRule((bdd_label & in_img & act_gen & rec_neg).give(nn_vae))
     system.addRule(Rule(neg(rec_sup)).give(beta_high))
 
     system.addRule((bdd_label & in_son & act_class).give(nn_cnn_mlp))

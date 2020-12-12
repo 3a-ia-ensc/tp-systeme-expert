@@ -52,11 +52,6 @@
                     </div>
 
                     <div>
-                        <input type="radio" id="mot" name="input" value="entree-mot" />
-                        <label for="mot">Mots</label>
-                    </div>
-
-                    <div>
                         <input type="radio" id="video" name="input" value="entree-video" />
                         <label for="video">Vidéos</label>
                     </div>
@@ -107,12 +102,12 @@
                 <div id = 'data' class = 'cat'>
                     <h3>Vos données ?</h3>
                     <div>
-                        <input type="radio" id="supervised" name="label" value="data-supervised" checked />
+                        <input type="radio" id="supervised" name="label" value="bdd-etiquetee" checked />
                         <label for="supervised">Etiquettées</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="unsupervised" name="label" value="data-unsupervised" />
+                        <input type="radio" id="unsupervised" name="label" value="bdd-non-etiquetee" />
                         <label for="unsupervised">Non étiquettées</label>
                     </div>
                 </div>
@@ -179,7 +174,11 @@
                 formData.append("input", get_radio_value('input'));
                 formData.append("action", get_radio_value('action'));
                 formData.append("label", get_radio_value('label'));
-                formData.append("reconstruction", rec_box.value);
+                if(rec_box.checked) {
+                    formData.append("reconstruction", 'reconstruction-elevee');
+                } else {
+                    formData.append("reconstruction", 'reconstruction-basse');
+                }
 
                 var request = new XMLHttpRequest();
                 request.open("POST", "/api/forward");
@@ -232,7 +231,7 @@
                 var a  = document.createElement('a')
                 a.classList.add('article_link')
                 a.href = article.url
-                a.innerText = article.name + ', ' + article.author + ' (' + article.year + ')'
+                a.innerText = article.name + ', ' + article.authors + ' (' + article.year + ')'
                 li.appendChild(a)
 
                 biblio.appendChild(li)
