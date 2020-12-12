@@ -35,6 +35,8 @@ def initialize_akinn():
     bdd_label = Fact('bdd-etiquetee')
     bdd_unlabel = Fact('bdd-non-etiquetee')
 
+    not_here = Fact('pas_ici', 'Faut pas faire du réseau de neurones là...', fact_type='terminal')
+
     class_bin = Fact('classes-binaire')
     class_mul = Fact('classes-multiple')
 
@@ -153,62 +155,200 @@ def initialize_akinn():
                     url='https://www.tandfonline.com/doi/abs/10.1080/01691864.2020.1829040'
                  ))
 
+    art_14 = Fact('article-image-seg-rnn',
+                 Article(
+                     name='Tensor-Train Recurrent Neural Networks for Video Classification',
+                     authors='Yang Y. at al.',
+                     year='2017',
+                     url='https://arxiv.org/abs/1707.01786'))
+
+    art_15 = Fact('article-video-class',
+                 Article(
+                     name="Large scale video classification with convolutional neural networks",
+                     authors='Karpathy A. & al.',
+                     year='2014',
+                     url='https://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf'
+                 ))
+
+    art_16 = Fact('article-video-segm-rnn',
+                 Article(
+                     name="Recurrent Fully Convolutional Networks for Video Segmentation",
+                     authors='Valipour S. & al.',
+                     year='2017',
+                     url='https://ieeexplore.ieee.org/abstract/document/7926594'
+                 ))
+
+    art_17 = Fact('article-video-segm-cnn',
+                 Article(
+                     name="Spatiotemporal CNN for Video Object Segmentation",
+                     authors='Xu K. & al.',
+                     year='2019',
+                     url='https://openaccess.thecvf.com/content_CVPR_2019/html/Xu_Spatiotemporal_CNN_for_Video_Object_Segmentation_CVPR_2019_paper.html'
+                 ))
+
+    art_18 = Fact('article-video-compl-cnn',
+                 Article(
+                     name="Deep Video Generation, Prediction and Completion of Human Action Sequences",
+                     authors='Haoye C. & al.',
+                     year='2018',
+                     url='https://openaccess.thecvf.com/content_ECCV_2018/html/Chunyan_Bai_Deep_Video_Generation_ECCV_2018_paper.html'
+                 ))
+
+    art_19 = Fact('article-video-compl-cnn',
+                 Article(
+                     name="Deep Video Generation, Prediction and Completion of Human Action Sequences",
+                     authors='Haoye C. & al.',
+                     year='2018',
+                     url='https://openaccess.thecvf.com/content_ECCV_2018/html/Chunyan_Bai_Deep_Video_Generation_ECCV_2018_paper.html'
+                 ))
+
+    art_20 = Fact('article-text-classi-rnn',
+                 Article(
+                     name="Generative and Discriminative Text Classification with Recurrent Neural Networks",
+                     authors='Yogatam D. & al.',
+                     year='2017',
+                     url='https://arxiv.org/pdf/1703.01898.pdf'
+                 ))
+
+    art_21 = Fact('article-text-classi-cnn',
+                 Article(
+                     name="Densely Connected CNN with Multi-scale Feature Attention for Text Classification",
+                     authors='Wang S. & al.',
+                     year='2019',
+                     url='https://www.researchgate.net/profile/Zhidong_Deng/publication/326203796_Densely_Connected_CNN_with_Multi-scale_Feature_Attention_for_Text_Classification/links/5bd1f6a04585150b2b875474/Densely-Connected-CNN-with-Multi-scale-Feature-Attention-for-Text-Classification.pdf'
+                 ))
+
+    art_22 = Fact('article-text-seg-rnn',
+                 Article(
+                     name="Paragraph text segmentation into lines with Recurrent Neural Networks",
+                     authors='Moysset B. & al.',
+                     year='2015',
+                     url='https://ieeexplore.ieee.org/abstract/document/7333803'
+                 ))
+
+    art_23 = Fact('article-text-compl-rnn',
+                 Article(
+                     name="Word RNN as a Baseline for Sentence Completion",
+                     authors='Heewoong P. & al.',
+                     year='2018',
+                     url='https://ieeexplore.ieee.org/abstract/document/8596572/'
+                 ))
+
+    art_24 = Fact('article-text-compl-cnn',
+                 Article(
+                     name="Neural Networks for Text Correction and Completion in Keyboard Decoding",
+                     authors='Gosh S. & al.',
+                     year='2017',
+                     url='https://arxiv.org/abs/1709.06429'
+                 ))
+
+    art_25 = Fact('article-text-compr-rnn',
+                 Article(
+                     name="Pushing the limits of RNN Compression",
+                     authors='Thakker U. & al.',
+                     year='2019',
+                     url='https://arxiv.org/abs/1910.02558'
+                 ))
+
+    art_26 = Fact('article-text-compr-cnn',
+                 Article(
+                     name="Dictionary based Compression Type Classification using a CNN Architecture",
+                     authors='Hyewon S. & al.',
+                     year='2019',
+                     url='https://ieeexplore.ieee.org/abstract/document/9023258'
+                 ))
+
+    art_27 = Fact('article-text-gen-rnn',
+                 Article(
+                     name="Story Scrambler - Automatic Text Generation Using Word Level RNN-LSTM",
+                     authors='Pawade D. & al.',
+                     year='2018',
+                     url='https://pdfs.semanticscholar.org/c51d/13034b2df47dae8f33bd0efad996de99ed4c.pdf'
+                 ))
+
+    art_28 = Fact('article-son-gen-gan',
+                 Article(
+                     name="MelGAN: Generative Adversarial Networks for Conditional Waveform Synthesis",
+                     authors='Kundan K. & al.',
+                     year='2019',
+                     url='https://proceedings.neurips.cc/paper/2019/hash/6804c9bca0a615bdb9374d00a9fcba59-Abstract.html'
+                 ))
+
+    art_29 = Fact('article-son-gen-rnn',
+                 Article(
+                     name="Automated sound generation based on image colour spectrum with using the recurrent neural network",
+                     authors='Nikitin N.A. & al.',
+                     year='2019',
+                     url='http://ceur-ws.org/Vol-2212/paper53.pdf'
+                 ))
+
+    art_30 = Fact('article-son-compr-vae',
+                 Article(
+                     name="Anaesthesia for neurosurgery in the sitting position: a practical approach",
+                     authors='Domaingue CM. & al.',
+                     year='2005',
+                     url='https://journals.sagepub.com/doi/abs/10.1177/0310057X0503300307'
+                 ))
+
     beta_high = Fact('parametre-beta-grand')
     beta_low = Fact('parametre-beta-petit')
 
-    system.addRule((in_img & temp).give(in_video))
+    system.addRule((bdd_label & in_img & temp).give(in_video))
 
-    system.addRule((in_img & act_class).give(nn_cnn_mlp))
-    system.addRule((in_img & act_class).give(nn_mlp))
-    system.addRule((in_img & act_seg).give(nn_cnn))
-    system.addRule((in_img & act_compl).give(nn_rnn))
+    system.addRule((bdd_label & in_img & act_class).give(nn_cnn_mlp))
+    system.addRule((bdd_label & in_img & act_class).give(nn_mlp))
+    system.addRule((bdd_label & in_img & act_seg).give(nn_cnn))
+    system.addRule((bdd_label & in_img & act_compl).give(nn_rnn))
 
-    system.addRule((in_img & act_compr).give(nn_vae))
-    system.addRule((in_img & act_gen & rec_sup).give(nn_vae))
+    system.addRule((bdd_label & in_img & act_compr).give(nn_vae))
+    system.addRule((bdd_label & in_img & act_gen & rec_sup).give(nn_vae))
     system.addRule(Rule(rec_sup).give(beta_low))
-    system.addRule((in_img & act_gen & neg(rec_sup)).give(nn_gan))
-    system.addRule((in_img & act_gen & neg(rec_sup)).give(nn_vae))
+    system.addRule((bdd_label & in_img & act_gen & neg(rec_sup)).give(nn_gan))
+    system.addRule((bdd_label & in_img & act_gen & neg(rec_sup)).give(nn_vae))
     system.addRule(Rule(neg(rec_sup)).give(beta_high))
 
-    system.addRule((in_son & act_class).give(nn_cnn_mlp))
-    system.addRule((in_son & act_class).give(nn_mlp))
-    system.addRule((in_son & act_seg).give(nn_cnn))
-    system.addRule((in_son & act_seg).give(nn_rnn))
-    system.addRule((in_son & act_compr).give(nn_vae))
-    system.addRule((in_son & act_compl).give(nn_rnn))
-    system.addRule((in_son & act_gen).give(nn_rnn))
-    system.addRule((in_son & act_gen).give(nn_gan))
+    system.addRule((bdd_label & in_son & act_class).give(nn_cnn_mlp))
+    system.addRule((bdd_label & in_son & act_class).give(nn_mlp))
+    system.addRule((bdd_label & in_son & act_seg).give(nn_cnn))
+    system.addRule((bdd_label & in_son & act_seg).give(nn_rnn))
+    system.addRule((bdd_label & in_son & act_compr).give(nn_vae))
+    system.addRule((bdd_label & in_son & act_compl).give(nn_rnn))
+    system.addRule((bdd_label & in_son & act_gen).give(nn_rnn))
+    system.addRule((bdd_label & in_son & act_gen).give(nn_gan))
 
-    system.addRule((in_phrase & act_class).give(nn_mlp))
-    system.addRule((in_phrase & act_class).give(nn_cnn))
-    system.addRule((in_phrase & act_compl).give(nn_rnn))
-    system.addRule((in_phrase & act_gen).give(nn_rnn))
-    system.addRule((in_phrase & act_gen).give(nn_gan))
+    system.addRule((bdd_label & in_phrase & act_class).give(nn_mlp))
+    system.addRule((bdd_label & in_phrase & act_class).give(nn_cnn))
+    system.addRule((bdd_label & in_phrase & act_compl).give(nn_rnn))
+    system.addRule((bdd_label & in_phrase & act_gen).give(nn_rnn))
+    system.addRule((bdd_label & in_phrase & act_gen).give(nn_gan))
 
-    system.addRule((in_txt & act_class).give(nn_rnn))
-    system.addRule((in_txt & act_class).give(nn_cnn))
-    system.addRule((in_txt & act_seg).give(nn_rnn))
-    system.addRule((in_txt & act_seg).give(nn_cnn))
-    system.addRule((in_txt & act_compl).give(nn_rnn))
-    system.addRule((in_txt & act_compr).give(nn_rnn))
-    system.addRule((in_txt & act_gen).give(nn_rnn))
+    system.addRule((bdd_label & in_txt & act_class).give(nn_rnn))
+    system.addRule((bdd_label & in_txt & act_class).give(nn_cnn))
+    system.addRule((bdd_label & in_txt & act_seg).give(nn_rnn))
+    system.addRule((bdd_label & in_txt & act_seg).give(nn_cnn))
+    system.addRule((bdd_label & in_txt & act_compl).give(nn_rnn))
+    system.addRule((bdd_label & in_txt & act_compr).give(nn_cnn))
+    system.addRule((bdd_label & in_txt & act_gen).give(nn_rnn))
 
-    system.addRule((in_video & act_class).give(nn_rnn))
-    system.addRule((in_video & act_class).give(nn_cnn))
-    system.addRule((in_video & act_seg).give(nn_rnn))
-    system.addRule((in_video & act_compl).give(nn_cnn))
-    system.addRule((in_video & act_compl).give(nn_gan))
-    system.addRule((in_video & act_compr).give(nn_rnn))
-    system.addRule((in_video & act_gen).give(nn_gan))
+    system.addRule((bdd_label & in_video & act_class).give(nn_rnn))
+
+    system.addRule((bdd_label & in_video & act_class).give(nn_cnn))
+    system.addRule((bdd_label & in_video & act_seg).give(nn_rnn))
+    system.addRule((bdd_label & in_video & act_compl).give(nn_cnn))
+    system.addRule((bdd_label & in_video & act_compl).give(nn_gan))
+    system.addRule((bdd_label & in_video & act_compr).give(nn_rnn))
+    system.addRule((bdd_label & in_video & act_gen).give(nn_gan))
 
     system.addRule(Rule(in_mat).give(in_vec))
-    system.addRule((in_vec & act_reg).give(nn_rnn))
-    system.addRule((in_vec & act_class).give(nn_cnn))
-    system.addRule((in_vec & act_seg).give(nn_rnn))
-    system.addRule((in_vec & act_compl).give(nn_cnn))
-    system.addRule((in_vec & act_compl).give(nn_gan))
-    system.addRule((in_vec & act_compr).give(nn_rnn))
-    system.addRule((in_vec & act_gen).give(nn_gan))
+    system.addRule((bdd_label & in_vec & act_reg).give(nn_rnn))
+    system.addRule((bdd_label & in_vec & act_class).give(nn_cnn))
+    system.addRule((bdd_label & in_vec & act_seg).give(nn_rnn))
+    system.addRule((bdd_label & in_vec & act_compl).give(nn_cnn))
+    system.addRule((bdd_label & in_vec & act_compl).give(nn_gan))
+    system.addRule((bdd_label & in_vec & act_compr).give(nn_rnn))
+    system.addRule((bdd_label & in_vec & act_gen).give(nn_gan))
+
+    system.addRule(Rule(bdd_unlabel).give(not_here))
 
     # ajout de la bibliographie
     system.addRule(Rule(nn_perc).give(art_1))
