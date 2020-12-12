@@ -91,7 +91,7 @@ def initialize_akinn():
                     url='https://ieeexplore.ieee.org/abstract/document/8357580'
                  ))
 
-    art_6 = Fact('article-img-compl-cnn',
+    art_6 = Fact('article-img-compl-rnn',
                  Article(
                     name='Globally and locally consistent image completion',
                     authors='Satoshi lizuka, Edgar Simo-Serra, Iroshi Ishikawa',
@@ -353,4 +353,15 @@ def initialize_akinn():
     # ajout de la bibliographie
     system.addRule(Rule(nn_perc).give(art_1))
     system.addRule((in_img & nn_cnn_mlp).give(art_2))
+    system.addRule((in_img & nn_mlp).give(art_3))
+    system.addRule((in_img & nn_cnn).give(art_5))
+    system.addRule((in_img & nn_rnn).give(art_6))
+
+    system.addRule((in_img & act_compr & nn_vae).give(art_7))
+    system.addRule((in_img & rec_sup & nn_vae).give(art_8))
+    system.addRule((in_img & neg(rec_sup) & nn_vae).give(art_9))
+    system.addRule((in_img & nn_gan).give(art_10))
+
+    system.addRule((in_son & nn_cnn_mlp).give(art_11))
+
     return system
